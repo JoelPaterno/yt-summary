@@ -1,10 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template, request, session
+from apitest import get_summary
 
 app = Flask(__name__)
+app.secret_key = "hello"
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.route("/", methods=["POST", "GET"])
+def home():
+    if request.method == "POST":
+        url = request.form["url"]
+        length = request.form["length"]
+        summary = get_summary(url=url, length=length)
+        return render_template("summary.html", url=url, summary=summary)
+    else:
+        return render_template("index.html")
 
 if  __name__ == "__main__":
     app.run(debug=True)
