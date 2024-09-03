@@ -2,3 +2,4 @@ openai
 google-api-python-client
 Flask
 virtualenv
+selenium
