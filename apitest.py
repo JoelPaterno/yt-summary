@@ -8,7 +8,7 @@ load_dotenv()
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-def get_summary(url, length):
+def get_summary(url, length, html):
     id = url.split("v=", 1)[1]
     #YouTube Data API to get video transcript. It seems that we cannot access the transcript from the API
     with build('youtube', 'v3', developerKey=YOUTUBE_API_KEY) as service:
@@ -23,7 +23,7 @@ def get_summary(url, length):
         messages =[
             {
                 "role": "user",
-                "content": f"please write a {length} word summary of this youtube video description: {data['items'][0]['snippet']['description']}",
+                "content": f"please write a {length} word summary of this youtube video description: {data['items'][0]['snippet']['description']} and the transcript of the video: {html}. include dot points of the main things covered in the transcript",
             }
         ],
         model="gpt-3.5-turbo",

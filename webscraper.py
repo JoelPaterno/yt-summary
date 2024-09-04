@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from bs4 import BeautifulSoup
 import time
 
@@ -10,6 +11,7 @@ def scrape_website(website) -> None:
     print("launching chrome browser...")
     service = Service(executable_path="chromedriver.exe")
     driver = webdriver.Chrome(service=service)
+    driver.maximize_window()
 
     try:
         driver.get(website)
@@ -18,9 +20,13 @@ def scrape_website(website) -> None:
         )
         element.click()
         element2 = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, 'button-container'))
+            EC.presence_of_element_located((By.CSS_SELECTOR, '.yt-spec-button-shape-next'))
         )
-        driver.execute_script("arguments[0].click();", element2)
+        print("button found...")
+        time.sleep(3)
+        driver.execute_script("arguments[0].scrollIntoView();", element2)
+        time.sleep(5)
+        element2.click()
         time.sleep(5)
         html = driver.page_source
         return html
@@ -39,5 +45,4 @@ def clean_body_content(body_content):
     for script_or_style in soup(["script", "style"]):
         script_or_style.extract()
     cleaned_content = soup.get_text(separator="\n")
-    #cleaned_contant = "\n".join()
     return cleaned_content
