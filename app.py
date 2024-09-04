@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, session
 from apitest import get_summary
-from webscraper import scrape_website, extract_body_content, clean_body_content
 from transcript import get_transcript
 
 app = Flask(__name__)
