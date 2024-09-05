@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 {% block title %}YouTube Summary{% endblock %}
 {% block content %}
-    Please enter the Link to the youtube video.
-    <div class ="container-fluid">
-        <form action="#" method="POST">
-            <input type="url" name="url" placeholder="Enter YouTube video link"/>
-            <input type="number" name="length" placeholder="Enter length of summary">
-            <input type="submit" value="submit"/>
-        </form>
+    <h1>Please enter the link to the youtube video.</h>
+    <div class ="container">
+        <div class="form-container">
+            <form action="#" method="POST">
+                <div class="input-container">
+                    <input type="url" name="url" placeholder="Enter YouTube video link"/>
+                    <input type="number" name="length" placeholder="Enter length of summary">
+                </div>
+                <input type="submit" value="submit"/>
+            </form>
+        </div>
     </div>
 {% endblock %}
