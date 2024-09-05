@@ -2,5 +2,4 @@ openai
 google-api-python-client
 Flask
 virtualenv
-selenium
-beautifulsoup4
+youtube-transcript-api
