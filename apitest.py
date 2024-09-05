@@ -23,12 +23,13 @@ def get_summary(url, length, html):
         messages =[
             {
                 "role": "user",
-                "content": f"please write a {length} word summary of this youtube video description: {data['items'][0]['snippet']['description']} and the transcript of the video: {html}. include dot points of the main things covered in the transcript",
+                "content": f"please write a {length} word summary of this youtube video description: {data['items'][0]['snippet']['description']} and the transcript of the video: {html}. Always include dot points of the main things covered in the transcript. Please only respond with a HTML formatted response.",
             }
         ],
         model="gpt-3.5-turbo",
     )
 
     message = chat_completion.choices[0].message.content
+    print(message)
     return message
 
