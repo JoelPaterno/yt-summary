@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, session
 from apitest import get_summary
 from transcript import get_transcript
 
-app = Flask(__name__)
+application = Flask(__name__)
+app = application
 app.secret_key = "hello"
 
 @app.route("/", methods=["POST", "GET"])

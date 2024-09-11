@@ -1,5 +1,0 @@
-openai
-google-api-python-client
-Flask
-virtualenv
-youtube-transcript-api
