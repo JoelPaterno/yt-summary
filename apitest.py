@@ -1,6 +1,6 @@
-from googleapiclient.discovery import build
-from dotenv import load_dotenv
-from openai import OpenAI
+from googleapiclient.discovery import build # type: ignore
+from dotenv import load_dotenv # type: ignore
+from openai import OpenAI # type: ignore
 import os
 
 load_dotenv()
@@ -10,6 +10,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 def get_summary(url, length, html):
     id = url.split("v=", 1)[1]
+    
     #YouTube Data API to get video transcript. It seems that we cannot access the transcript from the API
     with build('youtube', 'v3', developerKey=YOUTUBE_API_KEY) as service:
         response = service.videos().list(part='snippet', id=id)

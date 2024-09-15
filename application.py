@@ -16,6 +16,7 @@ def home():
         script = ""
         for dict in transcript:
             script += dict["text"]
+        print(script)
         summary = get_summary(url=url, length=length, html=script)
         return render_template("summary.html", url=url, summary=summary)
     else:
