@@ -24,7 +24,7 @@ def get_summary(url, length, script):
         messages =[
             {
                 "role": "user",
-                "content": f"Imagine you are an teaching assistant. I am trying to learn about a subject and need to watch many youtube videos on certain subjects. Sometimes I just need a summary of the contents of the youtube video in dot points. Please write a {length} word summary using the transcript of the video: {script}. Always include dot points of the main things covered in the transcript. Please only respond with a HTML formatted response. If there is no transcript provided, please respond with: \"No transcript available\".",
+                "content": f"Imagine you are an teaching assistant. I am trying to learn about a subject and need to watch many youtube videos on certain subjects. Sometimes I just need a summary of the contents of the youtube video in dot points. Please write a {length} word summary using the transcript of the video: {script}. The summary should always be structured as follows: It should start 2-3 sentences introduction of what the video is about. Following this 3-7 dot points of the main things covered in the video. Lastly the summary should end with 2-3 sentences conclusion. Please only respond with a HTML formatted response. If there is no transcript provided, please respond with: \"No transcript available\".",
             }
         ],
         model="gpt-3.5-turbo",
