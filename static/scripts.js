@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    $('form').on('submit', function(e) {
-        e.preventDefault();
+    $('form').on('submit', function() {
         
         var $submitButton = $(this).find('input[type="submit"]');
         var $spinner = $(this).find('.spinner');

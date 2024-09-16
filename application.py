@@ -13,11 +13,12 @@ def home():
         length = request.form["length"]
         id = url.split("v=", 1)[1]
         transcript = get_transcript(id)
+        print(transcript)
         script = ""
         for dict in transcript:
             script += dict["text"]
         print(script)
-        summary = get_summary(url=url, length=length, html=script)
+        summary = get_summary(url=url, length=length, script=script)
         return render_template("summary.html", url=url, summary=summary)
     else:
         return render_template("index.html")

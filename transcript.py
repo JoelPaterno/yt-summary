@@ -1,10 +1,10 @@
 from youtube_transcript_api import YouTubeTranscriptApi # type: ignore
 
 def get_transcript(video_id):
-    response = ""
+    response = []
     try:
-        response = YouTubeTranscriptApi.list_transcripts(video_id)
+        response = YouTubeTranscriptApi.list_transcripts(video_id, languages=["en"])
     except:
-        response = ""
+        response = []
     return response
     
