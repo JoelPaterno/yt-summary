@@ -12,6 +12,6 @@ $(document).ready(function() {
         setTimeout(function() {
             $spinner.hide();
             $submitButton.show();
-        }, 3000);
+        }, 10000);
     });
 });
